@@ -31,3 +31,24 @@ JavaScript, HTML, variables, arrays, funciones, parámetros, `return`, condicion
 2. Abrir el archivo `index.html` en un navegador.
 3. Interactuar con el simulador mediante las ventanas emergentes (`prompt` y `alert`).
 4. Abrir la consola del navegador con `F12` para visualizar los resultados.
+
+## Pre-Entrega 5 - Instanciando Objetos
+
+En esta entrega se incorporó programación orientada a objetos al simulador de venta de entradas.
+
+### Funcionalidades agregadas
+
+- Creación de una clase Entrada utilizando class.
+- Uso de constructor y this para definir las propiedades tipo, precio, sector y stock.
+- Instanciación de tres objetos mediante new: General, Preferencial y VIP.
+- Implementación del método vender() para descontar entradas del stock.
+- Verificación de disponibilidad antes de realizar una compra.
+- Integración de los objetos con el menú de compras, las funciones, los ciclos y los arrays existentes.
+- Visualización de los objetos y del stock actualizado mediante console.log().
+
+### Tecnologías utilizadas
+
+- HTML5
+- JavaScript
+- Programación orientada a objetos
+- Arrays, funciones, condicionales y ciclos

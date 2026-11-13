@@ -7,6 +7,32 @@ if (nombre === null || nombre === "") {
     const precioGeneral = 10000;
     const precioPreferencial = 15000;
     const precioVIP = 25000;
+    // Clase para representar las entradas del evento
+    class Entrada {
+       constructor(tipo, precio, sector, stock) {
+        this.tipo = tipo;
+        this.precio = precio;
+        this.sector = sector;
+        this.stock = stock;
+       } 
+       vender() {
+        if (this.stock > 0) {
+            this.stock = this.stock - 1;
+            console.log("Entrada vendida: " + this.tipo);
+            console.log("Stock restante: " + this.stock);
+        } else {
+            console.log("No hay entradas disponibles.");
+        }
+       }
+    }
+    // Creamos nuestra primera entrada
+    const entradaGeneral = new Entrada("General", 10000, "Campo", 100);
+    const entradaPreferencial = new Entrada("Preferencial", 15000, "Platea", 50);
+    const entradaVIP = new Entrada("VIP", 25000, "Palco", 20);
+    console.log(entradaGeneral);
+    console.log(entradaPreferencial);
+    console.log(entradaVIP);
+    
     const asistentes = ["Juan", "María", "Pedro", "Ana", "Luis"];
     console.log(asistentes);
     console.log(asistentes[2]);
@@ -39,6 +65,12 @@ if (nombre === null || nombre === "") {
         }
     }
     mostrarAsistentes(asistentes);
+    // Obtiene el objeto Entrada según la opción elegida
+function obtenerEntrada(opcion) {
+    if (opcion === "1") return entradaGeneral;
+    else if (opcion === "2") return entradaPreferencial;
+    else if (opcion === "3") return entradaVIP;
+}
     function obtenerPrecio(opcion) {
         if (opcion === "1") {
             return precioGeneral;
@@ -74,8 +106,16 @@ if (nombre === null || nombre === "") {
 
         if (opcion === "1" || opcion === "2" || opcion === "3") {
             console.log("Elegiste " + obtenerTipoEntrada(opcion));
+            const entradaSeleccionada = obtenerEntrada(opcion);
+            console.log("Stock disponible: " + entradaSeleccionada.stock);
+            // Verificamos si hay entradas disponibles
+            if (entradaSeleccionada.stock === 0) {
+                alert("Lo sentimos, no quedan entradas de este tipo.");
+                continue;
+            }
             const nuevoAsistente = prompt("¿Cuál es el nombre del asistente?");
             if (nuevoAsistente !== null && nuevoAsistente.trim() !== "") {
+                entradaSeleccionada.vender();
                 asistentes.push(nuevoAsistente.trim());
                 total = calcularTotal(total, obtenerPrecio(opcion));
                 cantidadEntradas = cantidadEntradas + 1;
