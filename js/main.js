@@ -9,21 +9,21 @@ if (nombre === null || nombre === "") {
     const precioVIP = 25000;
     // Clase para representar las entradas del evento
     class Entrada {
-       constructor(tipo, precio, sector, stock) {
-        this.tipo = tipo;
-        this.precio = precio;
-        this.sector = sector;
-        this.stock = stock;
-       } 
-       vender() {
-        if (this.stock > 0) {
-            this.stock = this.stock - 1;
-            console.log("Entrada vendida: " + this.tipo);
-            console.log("Stock restante: " + this.stock);
-        } else {
-            console.log("No hay entradas disponibles.");
+        constructor(tipo, precio, sector, stock) {
+            this.tipo = tipo;
+            this.precio = precio;
+            this.sector = sector;
+            this.stock = stock;
         }
-       }
+        vender() {
+            if (this.stock > 0) {
+                this.stock = this.stock - 1;
+                console.log("Entrada vendida: " + this.tipo);
+                console.log("Stock restante: " + this.stock);
+            } else {
+                console.log("No hay entradas disponibles.");
+            }
+        }
     }
     // Creamos nuestra primera entrada
     const entradaGeneral = new Entrada("General", 10000, "Campo", 100);
@@ -32,7 +32,11 @@ if (nombre === null || nombre === "") {
     console.log(entradaGeneral);
     console.log(entradaPreferencial);
     console.log(entradaVIP);
-    
+    // Array de objetos con las entradas del evento
+    const entradas = [entradaGeneral, entradaPreferencial, entradaVIP];
+
+    console.log(entradas);
+
     const asistentes = ["Juan", "María", "Pedro", "Ana", "Luis"];
     console.log(asistentes);
     console.log(asistentes[2]);
@@ -56,7 +60,7 @@ if (nombre === null || nombre === "") {
     } else {
         console.log("El asistente no esta registrado");
     }
-    
+
     function mostrarAsistentes(lista) {
         console.log("--- LISTA DE ASISTENTES ---");
 
@@ -66,11 +70,11 @@ if (nombre === null || nombre === "") {
     }
     mostrarAsistentes(asistentes);
     // Obtiene el objeto Entrada según la opción elegida
-function obtenerEntrada(opcion) {
-    if (opcion === "1") return entradaGeneral;
-    else if (opcion === "2") return entradaPreferencial;
-    else if (opcion === "3") return entradaVIP;
-}
+    function obtenerEntrada(opcion) {
+        if (opcion === "1") return entradaGeneral;
+        else if (opcion === "2") return entradaPreferencial;
+        else if (opcion === "3") return entradaVIP;
+    }
     function obtenerPrecio(opcion) {
         if (opcion === "1") {
             return precioGeneral;
@@ -99,7 +103,14 @@ function obtenerEntrada(opcion) {
 
     while (opcion !== "4") {
         opcion = prompt(
-            "Elegi una opcion:\n1 - Entrada General: $10.000\n2 - Entrada Preferencial: $15.000\n3 - Entrada VIP: $25.000\n4 - Salir"
+            "Elegí una opción:\n" +
+            "1 - Comprar entrada General: $10.000\n" +
+            "2 - Comprar entrada Preferencial: $15.000\n" +
+            "3 - Comprar entrada VIP: $25.000\n" +
+            "4 - Salir\n" +
+            "5 - Buscar una entrada\n" +
+            "6 - Ver entradas disponibles\n" +
+            "7 - Ver lista de precios"
         );
 
         console.log(opcion);
@@ -128,6 +139,35 @@ function obtenerEntrada(opcion) {
             }
 
 
+        } else if (opcion === "5") {
+            // Buscamos una entrada según el tipo ingresado
+            const tipoBuscado = prompt("¿Qué entrada querés buscar? General, Preferencial o VIP");
+
+            if (tipoBuscado !== null) {
+                const resultado = entradas.find(
+
+                    entrada => entrada.tipo.toLowerCase() === tipoBuscado.trim().toLowerCase()
+                );
+
+                if (resultado) {
+                    console.log("Entrada encontrada:", resultado);
+                } else {
+                    console.log("No se encontró esa entrada.");
+                }
+            }
+        } else if (opcion === "6") {
+            // Mostramos las entradas que tienen stock disponible
+            const disponibles = entradas.filter(entrada => entrada.stock > 0);
+
+            console.log("Entradas disponibles:", disponibles);
+
+        } else if (opcion === "7") {
+            // Creamos una lista de precios con map()
+            const preciosEntradas = entradas.map(
+                entrada => entrada.tipo + ": $" + entrada.precio
+            );
+
+            console.log("Lista de precios:", preciosEntradas);
 
         } else if (opcion === "4" || opcion === null) {
             console.log("Saliendo...");

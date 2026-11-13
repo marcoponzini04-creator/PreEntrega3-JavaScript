@@ -52,3 +52,31 @@ En esta entrega se incorporó programación orientada a objetos al simulador de 
 - JavaScript
 - Programación orientada a objetos
 - Arrays, funciones, condicionales y ciclos
+
+## Pre-Entrega 6 - Funciones de Orden Superior
+
+En esta entrega se incorporaron funciones de orden superior al simulador de venta de entradas, permitiendo consultar y transformar la información almacenada en un array de objetos.
+
+### Funcionalidades agregadas
+
+- Creación de un array de objetos a partir de las instancias de la clase Entrada.
+- Implementación de find() para buscar una entrada según su tipo.
+- Implementación de filter() para consultar las entradas con stock disponible.
+- Implementación de map() para generar una lista de tipos de entrada y precios.
+- Incorporación de nuevas opciones al menú interactivo.
+- Integración de los métodos con las clases, funciones, arrays y ciclos de las entregas anteriores.
+- Visualización de los resultados mediante console.log().
+
+### Nuevas opciones del menú
+
+- Opción 5: Buscar una entrada.
+- Opción 6: Ver entradas disponibles.
+- Opción 7: Ver lista de precios.
+
+### Conceptos aplicados
+
+- Funciones de orden superior.
+- Funciones flecha.
+- Métodos find(), filter() y map().
+- Arrays de objetos.
+- Programación orientada a objetos.
